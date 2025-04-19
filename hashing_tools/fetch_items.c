@@ -16,12 +16,12 @@ _H_map_ *fetch_by_key(_H_map_ *_Hm_root__, void *_Key__, size_t _Key_size__)
         if (_Current__->_IDX__ == _Hash_idx__)
         {
             // Need to verify the key actually matches
-            if (_memRp__(_Current__->_Key__, _Key__, _Key_size__) == 0)
+            if (_Current__->_Key__ && _dmtc_Qmark__((char*)_Current__->_Key__, (char*)_Key__) == 0)
             {
                 return (_Current__);
             }
         }
-        
+
         _Current__ = _Current__->_LST_Nxt__;
     }
     
@@ -40,14 +40,13 @@ _H_map_ **fetch_by_value(_H_map_ *_Hm_root__, void *_Val__, size_t _Val_size__, 
     if (!_Hm_root__ || !_Val__ || _Val_size__ == 0 || !_Result_count__)
         return (NULL);
     
-    // First pass: count matching items
+    // first pass: count matching items
     *_Result_count__ = 0;
     _H_map_ *_Current__ = _Hm_root__;
     
     while (_Current__)
     {
-        if (_Current__->_Val__ && 
-            _memRp__(_Current__->_Val__, _Val__, _Val_size__) == 0)
+        if (_Current__->_Val__ && _dmtc_Qmark__((char *)_Current__->_Val__, (char *)_Val__) == 0)
         {
             (*_Result_count__)++;
         }
@@ -72,12 +71,10 @@ _H_map_ **fetch_by_value(_H_map_ *_Hm_root__, void *_Val__, size_t _Val_size__, 
     
     while (_Current__ && _Result_idx__ < *_Result_count__)
     {
-        if (_Current__->_Val__ && 
-            _memRp__(_Current__->_Val__, _Val__, _Val_size__) == 0)
+        if (_Current__->_Val__ && _dmtc_Qmark__((char *)_Current__->_Val__, (char *)_Val__) == 0)
         {
             _Results__[_Result_idx__++] = _Current__;
         }
-        
         _Current__ = _Current__->_LST_Nxt__;
     }
     
