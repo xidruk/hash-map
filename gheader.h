@@ -31,6 +31,7 @@ int _dmtc_Qmark__(const char *_FSide__, const char *_SSide__);
 char *_data_DUP__(const char *_Or_d);
 _H_map_ *_gen_HM_pair__(void);
 int initem(_H_map_ **_Hm_root__, void *_Key__, size_t _Key_size__, void *_Val__, size_t _Val_size__);
+unsigned long _generate_hash_idx__(void *_Key__, size_t _Key_size__);
 _H_map_ *fetch_by_key(_H_map_ *_Hm_root__, void *_Key__, size_t _Key_size__);
 _H_map_ *fetch_pair(_H_map_ *_Hm_root__, void *_Key__, size_t _Key_size__);
 _H_map_ **fetch_by_value(_H_map_ *_Hm_root__, void *_Val__, size_t _Val_size__, int *_Result_count__);
