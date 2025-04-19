@@ -38,10 +38,10 @@ int main(int argc, char **argv)
     _H_map_ **_Found_nodes__ = NULL;
     int _Result_count__ = 0;
     
-    // Test inserting items
+    // test inserting items
     printf("Testing hash map insertion...\n");
     
-    // Insert some test data
+    // insert some test data
     char *_Key1__ = "test_key1";
     char *_Val1__ = "test_value1";
     initem(&_My_hash_map__, _Key1__, get_data_size(_Key1__) + 1, _Val1__, get_data_size(_Val1__) + 1);
@@ -54,10 +54,10 @@ int main(int argc, char **argv)
     char *_Val3__ = "test_value2"; // Same value as Key2
     initem(&_My_hash_map__, _Key3__, get_data_size(_Key3__) + 1, _Val3__, get_data_size(_Val3__) + 1);
     
-    // Print the hash map contents
+    // trint the hash map contents
     _print_hash_map__(_My_hash_map__);
     
-    // Test fetching by key
+    // test fetching by key
     printf("\nTesting fetch_pair...\n");
     _Found_node__ = fetch_pair(_My_hash_map__, _Key2__, get_data_size(_Key2__) + 1);
     if (_Found_node__)
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     else
         printf("Node not found!\n");
     
-    // Test fetching by ID
+    // test fetching by ID
     printf("\nTesting fetch_by_id...\n");
     unsigned long _Target_idx__ = _Found_node__ ? _Found_node__->_IDX__ : 0;
     _Found_node__ = fetch_by_id(_My_hash_map__, _Target_idx__);
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
     else
         printf("Node with ID %lu not found!\n", _Target_idx__);
     
-    // Test fetching by value
+    // test fetching by value
     printf("\nTesting fetch_by_value...\n");
     _Found_nodes__ = fetch_by_value(_My_hash_map__, _Val2__, get_data_size(_Val2__) + 1, &_Result_count__);
     if (_Found_nodes__ && _Result_count__ > 0)
@@ -87,12 +87,12 @@ int main(int argc, char **argv)
             printf("  Node %d: key '%s', ID: %lu\n", 
                    i, (char *)_Found_nodes__[i]->_Key__, _Found_nodes__[i]->_IDX__);
         }
-        free(_Found_nodes__); // Free the array, not the nodes
+        free(_Found_nodes__); // free the array, not the nodes
     }
     else
         printf("No nodes found with value '%s'\n", _Val2__);
     
-    // Clean up
+    // clean up
     printf("\nCleaning up hash map...\n");
     _free_hash_map__(_My_hash_map__);
     printf("Hash map cleaned up successfully!\n");
